@@ -1,0 +1,41 @@
+<%- include ('./head') %>
+
+<form method="post">
+  <% email = password = "" %>
+  <% if (typeof error !== "undefined") { %>
+  <div class="response error">
+    <%= error %>
+  </div>
+  <% } %>
+  <div class="forms">
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" value="<%= email %> ">
+  </div>
+  <% if (typeof errors !== "undefined") { %>
+
+  <% errors.forEach(err => { %>
+  <% if (err.param === "email") { %>
+  <div class="response error">
+    <%= "*" + err.msg %>
+  </div>
+  <% } %>
+  <% }) %>
+  <% } %>
+  <div class="forms">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" value="<%= password %> ">
+  </div>
+  <% if (typeof errors !== "undefined") { %>
+
+  <% errors.forEach(err => { %>
+  <% if (err.param === "password") { %>
+  <div class="response error">
+    <%= "*" + err.msg %>
+  </div>
+  <% } %>
+  <% }) %>
+  <% } %>
+  <input type="submit" value="Submit">
+  <a href="/">Not registered yet? Sign Up</a>
+</form>
+<%- include('./foot') %>

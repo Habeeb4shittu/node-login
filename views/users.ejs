@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Student's List</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://localhost:10/bootstrap.min.css">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .btn-success {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class=" container">
+    <a href="#" class="btn btn-success btn-sm rounded-circle">+</a>
+    <table class="table table-stripped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% result.forEach(el => { %>
+        <tr>
+          <td><%= el.id %> </td>
+          <td><%= el.firstname %> </td>
+          <td><%= el.lastname %> </td>
+          <td><%= el.email %> </td>
+          <td><%= el.gender %> </td>
+          <td>
+            <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#editMode" data-id="<%= el.id %> ">Edit</button>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="editMode" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitleId">Edit User</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('./foot') %>

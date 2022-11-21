@@ -1,0 +1,113 @@
+<%- include ('./head') %>
+<form method="post">
+  <%  firstname = lastname = email = gender = password = conpassword = "" %>
+  <% if (typeof success !== "undefined") { %>
+  <div class="response success">
+    <%= success %>
+  </div>
+  <% } %>
+
+  <div class="forms">
+    <label for="firstname">First name:</label>
+    <input type="text" name="firstname" id="firstname" value="<%= firstname %>">
+  </div>
+  <div class="err">
+    <% if (typeof errors !== "undefined") { %>
+
+    <% errors.forEach(err => { %>
+    <% if (err.param === "firstname") { %>
+    <div class="response error">
+      <%= "*" + err.msg %>
+    </div>
+    <% } %>
+    <% }) %>
+    <% } %>
+  </div>
+  <div class="forms">
+    <label for="lastname">Last name:</label>
+    <input type="text" name="lastname" id="lastname" value="<%= lastname %>">
+  </div>
+  <div class="err">
+    <% if (typeof errors !== "undefined") { %>
+    <% errors.forEach(err => { %>
+    <% if (err.param === "lastname") { %>
+    <div class="response error">
+      <%= "*" + err.msg %>
+    </div>
+    <% } %>
+    <% }) %>
+    <% } %>
+  </div>
+  <div class=" forms">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" value="<%= email %>">
+  </div>
+  <div class="err">
+    <% if (typeof errors !== "undefined") { %>
+    <% errors.forEach(err => { %>
+    <% if (err.param === "email") { %>
+    <div class="response error">
+      <%= "*" + err.msg %>
+    </div>
+    <% } %>
+    <% }) %>
+    <% } %>
+  </div>
+  <div class="forms gender">
+    <label>Gender:</label>
+    <div>
+      <div>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male">
+      </div>
+      <div>
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female">
+      </div>
+    </div>
+  </div>
+  <div class="err">
+    <% if (typeof errors !== "undefined") { %>
+    <% errors.forEach(err => { %>
+    <% if (err.param === "gender") { %>
+    <div class="response error">
+      <%= "*" + err.msg %>
+    </div>
+    <% } %>
+    <% }) %>
+    <% } %>
+  </div>
+  <div class="forms">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" value="<%= password %>">
+  </div>
+  <div class="err">
+    <% if (typeof errors !== "undefined") { %>
+    <% errors.forEach(err => { %>
+    <% if (err.param === "password") { %>
+    <div class="response error">
+      <%= "*" + err.msg %>
+    </div>
+    <% } %>
+    <% }) %>
+    <% } %>
+  </div>
+  <div class="forms">
+    <label for="conpassword">Confirm Password:</label>
+    <input type="password" name="conpassword" id="conpassword">
+  </div>
+  <div class="err">
+    <% if (typeof errors !== "undefined") { %>
+    <% errors.forEach(err => { %>
+    <% if (err.param === "conpassword") { %>
+    <div class="response error">
+      <%= "*" + err.msg %>
+    </div>
+    <% } %>
+    <% }) %>
+    <% } %>
+  </div>
+  <input type="submit" name="submit" value="Submit">
+  <a href="/login">Already registered? Log In</a>
+</form>
+<%- include ('./foot') %>
